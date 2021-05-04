@@ -36,6 +36,24 @@ class LinkedList():
                 return True
             node = node._next
         return False
+    
+    def delete(self, value):
+        if self._max == None or self._min == None or value > self._max or value < self._min or self._head == None:
+            return False
+        prev = self._head
+        if prev._value == value:
+            self._head = None
+        elif prev._next == None:
+            return False
+        node = prev._next
+
+        while node != None:
+            if node._value == value:
+                prev._next = node._next
+                return True
+            prev, node = node, node._next
+
+        return False
 
 class Node():
     """DS to implement LL"""
@@ -47,5 +65,5 @@ linked_list.add(5)
 linked_list.add(6)
 linked_list.add(7)
 print(linked_list.exists(5))
-print(linked_list.exists(1))
+print(linked_list.delete(5))
 print(linked_list.exists(9))
