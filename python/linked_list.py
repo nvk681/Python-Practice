@@ -29,13 +29,13 @@ class LinkedList():
 
     def exists(self, value):
         if self._max == None or self._min == None or value > self._max or value < self._min or self._head == None:
-            return false
+            return False
         node = self._head
         while node != None:
             if node._value == value:
-                return true
+                return True
             node = node._next
-        return false
+        return False
 
 class Node():
     """DS to implement LL"""
