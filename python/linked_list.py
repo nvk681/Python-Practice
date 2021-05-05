@@ -8,48 +8,55 @@ class LinkedList():
         self._length = 0
 
     def add(self, value):
+        """Add item into the linked list """
         current_item = Node()
         current_item._value = value
         current_item._next = None
-        if self._head == None:
+        if self._head is None:
             self._max = self._min = None
-        if self._max == None or self._max < value:
+        if self._max is None or self._max < value:
             self._max = value
-        if self._min == None or self._min > value:
+        if self._min is None or self._min > value:
             self._min = value
-        if self._head == None:
+        if self._head is None:
             self._head = current_item
         else:
             current_item._next, self._head = self._head, current_item
         self._length += 1
 
     def min(self):
+        """Get the smallest element in the LL """
         return self._min
 
     def max(self):
+        """Get the biggest element in the LL """
         return self._max
 
     def exists(self, value):
-        if self._max == None or self._min == None or value > self._max or value < self._min or self._head == None:
+        """Check if the element exists in the LL """
+        if self._head is None:
+            return False
+        if self._max is None or self._min is None or value > self._max or value < self._min:
             return False
         node = self._head
-        while node != None:
+        while node is not None:
             if node._value == value:
                 return True
             node = node._next
         return False
-    
+
     def delete(self, value):
-        if self._max == None or self._min == None or value > self._max or value < self._min or self._head == None:
+        """ Remove a value from the LL """
+        if self._max is None or self._min is None or value > self._max or value < self._min or self._head is None:
             return False
         prev = self._head
         if prev._value == value:
             self._head = None
-        elif prev._next == None:
+        elif prev._next is None:
             return False
         node = prev._next
 
-        while node != None:
+        while node is not None:
             if node._value == value:
                 prev._next = node._next
                 self._length -= 1
