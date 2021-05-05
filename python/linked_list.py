@@ -5,21 +5,23 @@ class LinkedList():
 
     def __init__(self):
         self._head = None
-    
+        self._length = 0
+
     def add(self, value):
         current_item = Node()
         current_item._value = value
         current_item._next = None
         if self._head == None:
-           self._max = self._min = None 
+            self._max = self._min = None
         if self._max == None or self._max < value:
-             self._max = value
+            self._max = value
         if self._min == None or self._min > value:
-             self._min = value
+            self._min = value
         if self._head == None:
             self._head = current_item
-        else: 
-            current_item._next, self._head = self._head, current_item 
+        else:
+            current_item._next, self._head = self._head, current_item
+        self._length += 1
 
     def min(self):
         return self._min
@@ -50,10 +52,14 @@ class LinkedList():
         while node != None:
             if node._value == value:
                 prev._next = node._next
+                self._length -= 1
                 return True
             prev, node = node, node._next
 
         return False
+
+    def length(self):
+        return self._length
 
 class Node():
     """DS to implement LL"""
