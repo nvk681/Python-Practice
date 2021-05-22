@@ -5,6 +5,8 @@ class ListNode:
         self.next = next
 
 def mergeKLists(lists) -> ListNode:
+        l = [i for i in lists if i is not None]
+        lists = l
         if len(lists) == 0:
             return None
         if len(lists) == 1:
