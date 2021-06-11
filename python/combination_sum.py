@@ -14,6 +14,7 @@ def find_combinations(numbers, total):
             current_sum = numbers[index]
             current_set = [numbers[index]]
             if total == current_sum:
+                current_set.sort()
                 total_set.append(current_set)
             while total > current_sum:
                 current_sets = check_sum(numbers, total-current_sum)
@@ -21,6 +22,7 @@ def find_combinations(numbers, total):
                     temp = list(current_set)
                     for i in current:
                         temp.append(i)
+                    temp.sort()
                     total_set.append(temp)
                 current_set.append(numbers[index])
                 current_sum += numbers[index]
